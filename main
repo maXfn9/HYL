@@ -50,10 +50,10 @@
     <p>Select a session below to view the contents:</p>
 
     <ul class="session-list">
-        <li><a href="session01.html">Session 01</a></li>
-        <li><a href="session02.html">Session 02</a></li>
-        <li><a href="session03.html">Session 03</a></li>
-        <li><a href="session04.html">Session 04</a></li>
+        <li><a href="Nordhoff_Marie_Digital_Session1/index.html">Session 01</a></li>
+        <li><a href="Nordhoff_Marie_Digital_Session2/index.html">Session 02</a></li>
+        <li><a href="Nordhoff_Marie_Digital_Session3/index.html">Session 03</a></li>
+        <li><a href="Nordhoff_Marie_Digital_Session4/index.html">Session 04</a></li>
     </ul>
 
 </body>
