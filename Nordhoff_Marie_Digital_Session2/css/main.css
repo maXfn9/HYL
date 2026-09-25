@@ -1,0 +1,258 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Workbench";
+    line-height: 0;
+    /* font-weight:bolder; */
+    /* background-color: #ffffff; */
+}
+
+@font-face {
+    font-family: "Texturina";
+    src: url(../fonts/Texturina-Italic-VariableFont_opsz,wght.ttf) format("truetype");
+    src: url(../fonts/Texturina-VariableFont_opsz,wght.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "Foldit";
+    src: url(../fonts/Foldit-VariableFont_wght.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "Workbench";
+    src: url(../fonts/Workbench-Regular-VariableFont_BLED,SCAN.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "Iceberg";
+    src: url(../fonts/Iceberg-Regular.ttf) format("truetype");
+}
+
+.frame {
+    width: 1080px;
+    height:1920px;
+    border: 3px solid #000000;
+    margin: auto;
+    overflow: hidden;
+    background-color: #e8e8e8;
+    /* transform: translateX(-60px); */
+}
+
+.main-grid {
+    width: 100%;
+    height: 100%;
+    display: grid;
+
+    /* Das Main Grid hat 2 Spalten und 5 Zeilen */
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+
+    /* Hier wird die Animation zum Main Grid hinzugefügt */
+    animation: main-grid-animation 5s infinite;
+    /* background-color: #ffffff; */
+    
+}
+
+span {
+    /* Hier wird bestimmt, in welchem Verhältnis die Schrift zur Größe des Textfeld steht */
+    font-size: 120cqh;
+    animation: SIZE 5s infinite;
+    /* animation: font-change 5s infinite; */
+    /* animation: font-change 2s infinite; */
+    /* text-shadow: 0px 0px 70px rgb(255, 255, 255); */
+}
+
+.moveX{
+    width: 100%;
+    height: 100%;
+    padding-top: 65px;
+    padding-bottom: 0px;
+    /* padding: 40px; */
+    /* border: 5px solid #ffffff; */
+    /* border: 5px solid #000000; */
+    /* Nur zur Orientierung */
+    /* border: 2px solid #000000; */
+
+    /* Bestimmt die Anordnung der Elemente in den Textfeldern */
+    display: flex;
+    justify-content: center;
+    align-items:center;
+
+    /* Wichtig, damit proportionale Textgrößen wie cqh bei den darinliegenden Elementen funktioniert*/
+    container-type: size;
+    background-color: rgb(255, 255, 255);
+  /* background: linear-gradient(90deg,rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%); */
+    /* background: linear-gradient(90deg,rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);   */
+    /* background: linear-gradient(267deg,rgba(2, 0, 36, 1) 0%, rgba(125, 125, 125, 1) 35%, rgba(255, 255, 255, 1) 100%); */
+    /* background: linear-gradient(267deg,rgba(0, 0, 0, 1) 0%, rgba(125, 125, 125, 1) 0%, rgba(224, 224, 224, 1) 49%, rgba(255, 255, 255, 1) 100%); */
+    mix-blend-mode:difference;
+    color: rgb(0, 0, 0);
+    animation: moveX 2s infinite;
+    /* box-shadow: 30px 30px 0px rgb(255, 255, 255); */
+    /* border: 10px solid #000000; */
+    /* outline-style: inset; */
+    /* box-shadow:inset 0px 0px 0px 10px rgb(0, 0, 0); */
+    outline: 0px solid black;
+
+    white-space: pre;
+}
+
+.textfeld {
+    width: 100%;
+    height: 100%;
+    padding-top: 65px;
+    padding-bottom: 0px;
+    /* Nur zur Orientierung */
+    /* border: 5px solid #000000; */
+
+    /* Bestimmt die Anordnung der Elemente in den Textfeldern */
+    display: flex;
+    justify-content: center;
+    align-items:center;
+
+    /* Wichtig, damit proportionale Textgrößen wie cqh bei den darinliegenden Elementen funktioniert*/
+    container-type: size;
+    background-color: rgb(0, 0, 0);
+  /* background: linear-gradient(90deg,rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%); */
+    /* background: linear-gradient(90deg,rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);   */
+    /* background: linear-gradient(267deg,rgba(2, 0, 36, 1) 0%, rgba(125, 125, 125, 1) 35%, rgba(255, 255, 255, 1) 100%); */
+    /* background: linear-gradient(267deg,rgba(0, 0, 0, 1) 0%, rgba(125, 125, 125, 1) 0%, rgba(224, 224, 224, 1) 49%, rgba(255, 255, 255, 1) 100%); */
+    mix-blend-mode:difference;
+    color: rgb(255, 255, 255);
+    /* text-decoration: underline 30px solid; */
+    /* border-right: 10px solid #ffffff; */
+    /* border-bottom: 5px solid #ffffff; */
+    /* border-top: 5px solid #ffffff; */
+    /* border: 5px solid #ffffff; */
+    /* outline: 5px solid black; */
+    /* box-shadow:inset 0px 0px 0px 5px rgb(255, 255, 255); */
+    white-space: pre;
+
+    z-index: -100;
+}
+
+.moveY{
+    /* font-weight: lighter; */
+    /* background-color: #ffffff; */
+    /* text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.249); */
+    animation: moveY 5s infinite;
+    /* font-size: 300cqh; */
+    /* filter:invert(); */
+    /* border: 0px solid #000000; */
+    mix-blend-mode:difference;
+    /* background-color: rgb(0, 0, 0); */
+z-index: 1000;
+}
+
+.lighter{
+    font-weight:bolder;
+    font-style: italic;
+    /* animation: font-change 5s infinite; */
+    /* animation: VAR1 5s infinite; */
+    /* font-size: 450%; */
+    /* text-shadow: 20px 20px 1px rgb(255, 255, 255); */
+}
+
+.changefont {
+    animation: font-change 2s infinite;
+    /* color: rgb(255, 255, 255); */
+    /* background-color: blue; */
+     font-weight:bolder;
+    font-style: italic;
+    /* text-shadow: 25px 25px 0px rgb(0, 0, 0); */
+}
+
+/* Beispiel für eine Animation des Grid */
+@keyframes main-grid-animation {
+    0% ,100%{
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 4fr 2.5fr 2.5fr 4fr 2.5fr;
+        transform: skewY(-0deg);
+    }
+    20% {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 2.5fr 2.5fr 4fr 2.5fr 4fr;
+        transform: skewY(15deg);
+    }
+    40% {
+        grid-template-columns: 0.5fr 1.5fr;
+        grid-template-rows: 4fr 2.5fr 3fr 2.5fr 4fr;
+        transform: skewY(-0deg);
+    }
+    60% {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 4fr 4fr 2.5fr 4fr 2.5fr;
+        transform: skewY(15deg) ;
+
+    }
+    80% {
+        grid-template-columns: 1.5fr 0.5fr;
+        grid-template-rows: 2.5fr 4fr 2.5fr 4fr 2.5fr;
+        transform: skewY(-0deg);
+    }
+
+}
+
+@keyframes moveY {
+    0%, 100% {
+        transform: skewY(-15deg) translateY(-378px);
+        /* filter: blur(0px); */
+        text-transform:none;
+    }
+    50% {
+        transform: skewY(0deg) translateY(2px);
+        /* filter: blur(10px); */
+        /* text-transform: full-width; */
+    }
+}
+
+@keyframes SIZE {
+    /* 0%, 100% {
+        font-size: 150cqh;
+    }
+    50% {
+        font-size: 150cqh;
+    } */
+}
+
+@keyframes font-change {
+    0%, 100% {
+        /* font-weight: bolder; */
+        /* font-family: "Iceberg"; */
+        font-family: "Workbench";
+        /* transform: translateX(0px); */
+        /* content: "O"; */
+        /* letter-spacing: normal; */
+        letter-spacing: -90px;
+    }
+    50% {
+        /* font-weight: lighter; */
+        font-family: "Workbench";
+        /* line-height: -200%; */
+        /* transform: translateX(200px); */
+        /* content: "A"; */
+        /* filter: invert(); */
+        /* filter: blur(20px); */
+        /* letter-spacing: 100px; */
+        letter-spacing: 120px;
+    }
+}
+
+@keyframes moveX {
+    0%, 100% {
+        transform: translateX(-300px);
+        /* grid-template-columns: 1.5fr 0.5fr; */
+        letter-spacing: normal;
+        mix-blend-mode: difference;
+    }
+    50% {
+        transform: translateX(0px);
+        /* grid-template-columns: 0fr 2fr; */
+        /* font-weight: lighter; */
+        /* transform: rotate(-45deg); */
+        /* content: "A"; */
+        letter-spacing: 100px;
+    }
+}

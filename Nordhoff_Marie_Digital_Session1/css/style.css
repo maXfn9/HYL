@@ -1,0 +1,378 @@
+body {
+    width: 1080px;
+    height: 1920px;
+    margin: -1px auto;
+    border: 1px solid blue;
+    background-color: rgb(0, 0, 0);
+    overflow: hidden; /* no scrollbalken wenn letters move */
+}
+
+/* ____________________________ */
+/* GRID STYLING         */
+/* ____________________________ */
+/* Adapt and extend when        */
+/* needed.                      */
+/* ____________________________ */
+
+.main-grid {
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    /* vier gleich hohe zeilen */
+    gap: 0px;
+    margin: auto; /* zentriert horizontal */
+    /* margin-top: 8%; */
+    /* The grid takes this width and height of the poster */
+    width: 100%;
+    height: 100%;
+}
+
+.line {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 gleich breite spalten für die buchstaben */
+    gap: 0px;
+    align-items: center;
+    /* buchstaben vertikal zentriert */
+    justify-content: center;
+    /* buchstaben horrrizontal zentriert */
+    /* Each line takes full width and height of the corresponding grid cell */
+    width: 100%;
+    height: auto;
+    /* animation: waveX 4s linear infinite alternate;  */
+}
+
+.letter {
+    display: grid;
+    /* Each letter is split into a »pixel« grid of 6x6. Change the values to increase resolution, or entirely write your own grid. */
+    /*
+    - 6 x 6
+    - 1 zu 1 ratio
+    - rotierbar um max 45 grad
+    - verschiebbar auf x achse
+     */
+    grid-template-columns: repeat(6, 1fr); /* 6 Spalten für das 6x6 Grid */
+    grid-template-rows: repeat(6, 1fr);    /* 6 Zeilen für das 6x6 Grid */
+    /* buchstaben quadratisch machen */
+    aspect-ratio: 1 / 1;
+    /* startposition der buchstaben */
+    transform: translateX(calc(var(--initial-offset) * 1vw)) rotate(0deg);
+    /* drehpunkt für rotation hereee */
+    transform-origin: center;
+   /* animation – default buchstaben bewegen sich auf x-achse  */
+    animation-name: moveOnX;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    
+}
+
+
+
+/* -----------------------------------NUR ROTATION */
+.letter.only-rotate {
+    /* überschreibt die bewegung */
+    /* animation: waveX 4s linear infinite alternate;  */
+    animation-name: rotateSteps;
+    transition: transform 6s linear infinite alternate,
+                opacity 1s ease-in-out,
+                filter 1s ease-in-out,
+                scale 1.5s ease-in-out,
+                rotate 6s linear infinite alternate;
+}
+
+/* -----------------------------------BEWEGUNG & ROTATION */
+.letter.rotate {
+    /* rotation ist in der 'moveOnX'-animation enthalten */
+}
+
+/* -----------------------------------BEWEGUNG & NO ROATION */
+.letter.no-rotate-move {
+    animation-name: moveOnly;
+}
+
+/* -----------------------------------BEWEGUNGEN innerhalb der LINES*/
+.letter:nth-child(1) {
+    --initial-offset: 0;
+    --final-offset: 3.5;
+}
+
+.letter:nth-child(2) {
+    --initial-offset: 0;
+    --final-offset: -4;
+}
+
+.letter:nth-child(3) {
+    --initial-offset: -1.5;
+    --final-offset: 3.5;
+}
+
+.letter.empty-letter {
+    display: block;
+    /* background: transparent; */
+    /* background-color: rgb(255, 255, 255); */
+    /* mix-blend-mode: exclusion; */
+    /* mix-blend-mode: exclusion; */
+    /* border-style: solid; */
+    /* border-radius: 20px; */
+    /* border-width: 3px; */
+    /* border-color: rgb(255, 0, 0); */
+}
+/* ---------------
+----------------------PIXEL*/
+pixel {
+    /* Display a coloured block inside the grid. */
+    background-color: rgb(255, 255, 255);
+    display: block;
+    mix-blend-mode: exclusion;
+    /* border-style: solid; */
+    /* border-radius: 20px; */
+    /* border-width: 1px; */
+    /* animation: waveX 4s linear infinite alternate;  */
+    /* animation: waveY 5s linear infinite alternate; */
+}
+.letter pixel:nth-child(6n + 1) { /*  1, 7, 13, 19, 25, 31 */
+    animation-delay: 0s;
+  }
+  
+  .letter pixel:nth-child(6n + 2) { /*  2, 8, 14, 20, 26, 32 */
+    animation-delay: 0s;
+  }
+  
+  .letter pixel:nth-child(6n + 3) { /*  3, 9, 15, 21, 27, 33 */
+    animation-delay: 0s;
+  }
+  
+  .letter pixel:nth-child(6n + 4) { /*  4, 10, 16, 22, 28, 34 */
+    animation-delay: -1s;
+  }
+  
+  .letter pixel:nth-child(6n + 5) { /*5, 11, 17, 23, 29, 35 */
+    animation-delay: -1s;
+  }
+  
+  .letter pixel:nth-child(6n + 6) { /* 6, 12, 18, 24, 30, 36 */
+    animation-delay: -1s;
+  }
+
+empty {
+    display: block;
+    /* background: transparent; */
+    /* background-color: rgb(255, 255, 255);
+    mix-blend-mode: exclusion;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(255, 255, 255); */
+    /* animation: waveX 4s linear infinite alternate;  */
+   
+}
+
+show {
+    display: block;
+    /* background: transparent; */
+    background-color: rgb(255, 255, 255);
+    mix-blend-mode: exclusion;
+    /* border-style: solid; */
+    /* border-radius: 20px; */
+    /* border-width: 1px; */
+    border-color: rgb(0, 0, 0);
+    /* animation-name: moveOnX; */
+    animation: waveY 12s linear infinite alternate;
+    filter: blur(0.75px);
+}
+hide {
+    display: block;
+    /* background: transparent; */
+    background-color: rgb(0, 0, 0);
+    mix-blend-mode: exclusion;
+    /* border-style: solid; */
+    /* border-radius: 20px; */
+    /* border-width: 10px; */
+    /* border-color: rgb(0, 0, 0); */
+    /* animation-name: moveOnX; */
+    filter: blur(1px);
+    animation: waveY 12s linear infinite alternate;
+    
+}
+
+.letter show:nth-child(6n + 1) { /* 1, 7, 13, 19, 25, 31 */
+    animation-delay: 0s;
+  }
+  
+  .letter show:nth-child(6n + 2) { /*  2, 8, 14, 20, 26, 32 */
+    animation-delay: 0s;
+  }
+  
+  .letter show:nth-child(6n + 3) { /* 3, 9, 15, 21, 27, 33 */
+    animation-delay: 0s;
+  }
+  
+  .letter show:nth-child(6n + 4) { /*4, 10, 16, 22, 28, 34 */
+    animation-delay: 8s;
+  }
+  
+  .letter show:nth-child(6n + 5) { /* 5, 11, 17, 23, 29, 35 */
+    animation-delay: 8s;
+  }
+  
+  .letter show:nth-child(6n + 6) { /*6, 12, 18, 24, 30, 36 */
+    animation-delay: 8s;
+  }
+
+.letter show:nth-of-type(6n) { /* angepasst für 6x6 grid */
+    /* opacity: 0.2; */
+}
+
+
+/* ____________________________ */
+/* ANIMATIONEN              */
+/* ____________________________ */
+/* */
+/* ____________________________ */
+
+@keyframes waveX {
+    0% {
+      transform: translateX(-65px);
+    }
+    50% {
+      transform: translateX(0px); 
+    }
+    100% {
+      transform: translateX(65px);
+    }
+  }
+  @keyframes waveY {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(300px); 
+    }
+    100% {
+      transform: translateY(600px);
+    }
+  }
+
+/* BEWEGUNG & ROTATION */
+@keyframes moveOnX {
+    0% {
+        transform:  rotate(0deg); /* startet am ende und ohne rotation */
+        opacity: 1;
+        filter: blur(0px);
+        mix-blend-mode: exclusion;
+    }
+    50% {
+        transform: rotate(-22.5deg); /* in der mitte, etwas rotation */
+        opacity: 1;
+        mix-blend-mode: exclusion;
+        
+    }
+    100% {
+        transform: rotate(-45deg); /* am anderen ende, volle rotation */
+        opacity: 1;
+        filter: blur(0px);
+        mix-blend-mode: exclusion;
+    }
+}
+
+/* BEWEGUNG NO ROTATION */
+@keyframes moveOnly {
+    0% {
+        transform: translateX(calc(var(--final-offset) * 1.5vw)) rotate(0deg); /* startet am ende ohne rotation */
+        opacity: 1;
+        filter: blur(0px);
+        mix-blend-mode: exclusion;
+    }
+    50% {
+        transform: translateX(0vw) rotate(0deg); /* in der mitte ohne rotation */
+        opacity: 1;
+        /* filter: blur(10px); */
+        mix-blend-mode: exclusion;
+    }
+    100% {
+        transform: translateX(calc(var(--final-offset) * -1.5vw)) rotate(0deg); /* am anderen ende ohne rotation */
+        opacity: 1;
+        filter: blur(0px);
+        mix-blend-mode: exclusion;
+    }
+}
+
+/* ONLY ROTATION (für nicht bewegte Letters) */
+@keyframes rotateSteps {
+    0%   { 
+        transform: 
+        rotate(0deg) 
+        /* translateX(-65px) */
+        ; 
+        mix-blend-mode: exclusion;}
+    100%  { 
+        transform: 
+        rotate(-0deg) 
+        /* translateX(65px) */
+        ;
+        mix-blend-mode: exclusion; }
+}
+
+/* maybe so versatz???? */
+.delay-0 { animation-delay: -1s; }
+.delay-1 { animation-delay: -2s; }
+.delay-2 { animation-delay: -3s; }
+.delay-3 { animation-delay: -2s;}
+.delay-4 { animation-delay: -5s; }
+.delay-5 { animation-delay: -2s; }
+.delay-6 { animation-delay: -7s; }
+.delay-7 { animation-delay: -8s; }
+.delay-8 { animation-delay: -9s; }
+.delay-9 { animation-delay: -10s; }
+.delay-10 { animation-delay:-11s; }
+.delay-11 { animation-delay:-2s; }
+
+@keyframes gridInterrupt {
+    0% {
+        grid-template-columns: repeat(6, 1fr); /* angepasst für 6x6 grid */
+        grid-template-rows: repeat(6, 1fr);    /* angepasst für 6x6 grid */
+    }
+    75% { /* hier länger/nochmal für lesbarkeit*/
+        grid-template-columns: repeat(6, 1fr); /* angepasst für 6x6 grid */
+        grid-template-rows: repeat(6, 1fr);    /* angepasst für 6x6 grid */
+    }
+    80% { /* glich mäßig*/
+        grid-template-columns: repeat(5, 1fr); /* angepasst für 6x6 grid */
+        grid-template-rows: repeat(5, 1fr);    /* angepasst für 6x6 grid */
+    }
+    83% {
+        grid-template-columns: repeat(4, 1fr); /* angepasst für 6x6 grid */
+        grid-template-rows: repeat(4, 1fr);    /* angepasst für 6x6 grid */
+    }
+    85% {
+        grid-template-columns: repeat(3, 2fr); /* angepasst für 6x6 grid */
+        grid-template-rows: repeat(3, 2fr);    /* angepasst für 6x6 grid */
+    }
+    90% {
+        grid-template-columns: repeat(2, 3fr); /* angepasst für 6x6 grid */
+        grid-template-rows: repeat(2, 3fr);    /* angepasst für 6x6 grid */
+    }
+    95% {
+        grid-template-columns: repeat(1, 6fr); /* angepasst für 6x6 grid */
+        grid-template-rows: repeat(1, 6fr);    /* angepasst für 6x6 grid */
+    }
+    100% {
+        grid-template-columns: repeat(1, 6fr); /* angepasst für 6x6 grid */
+        grid-template-rows: repeat(1, 6fr);    /* angepasst für 6x6 grid */
+    }
+}
+
+.letter.only-rotate.interrupt-grid {
+    animation-name: rotateSteps, gridInterrupt;
+    animation-duration: 6s, 3s;
+    animation-timing-function: linear, ease-in;
+    /* ease-in is mehr glitchy */
+    animation-iteration-count: infinite, infinite;
+    animation-direction: alternate, alternate;
+    transition: transform 6s linear infinite alternate,
+                opacity 1s ease-in-out,
+                filter 1s ease-in-out,
+                scale 1.5s ease-in-out,
+                rotate 6s linear infinite alternate;
+                
+}

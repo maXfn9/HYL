@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Session4</title>
+		<link rel="stylesheet" href="assets/css/style.css">
+		<script src="assets/js/audio.js"></script>
+		<!-- <script src="assets/js/script.js"></script> -->
+	    <!-- <script src="../session3-marienordhoff/js/script.js"></script> -->
+	</head>
+	<body>
+		<main class="main">
+			<!-- YOUR CONTENT HERE -->
+			<!-- <h1 class="title">&nbsp Stim<br> &nbsp mhaft <br> &nbsp -los.</h1> -->
+			<h1 class="title fx">&nbsp Stim<br> &nbsp mhaft <br> &nbsp -los.</h1>
+
+			<h1 class="title-3">tdtdtd <br> ......</h1>
+			<h1 class="title-2">
+				
+				..../d/d/d/d/.......... <br> 
+				........./d/d/d/d/ <br> 
+				.... <br> 
+				.. <br>
+				/d/d/d/t/t/t/t/t/ <br> 
+				/t/t/t/t/t/d/d/d/d/d.d.d.d.d. <br> 
+				/t/t/t/t/t.t.t.t.t.t.t.t/t/t/t/t/ <br> 
+				/t/t/ <br> 
+				/d/ <br> 
+				/d/d/d/t/t/d/ <br> 
+				/d/t/t/t/ <br>
+				/d/d/t/t/d/ <br>
+				/d/d.d.d/d/t/t/d.d.d/d/d/ <br>
+				/d.d.d.t.t.t.t./t/t/ <br> 
+				/t/t/t/d/d/ <br> 
+				./. <br> 
+				/d/d/d/d/d/ <br>
+				/d/d/.d.d.d/d/d/d/ <br>
+				/d/d/d/d/.d.d.d.d.d/d/t/t/t/t/t/t/t/ <br>
+				.... <br> 
+				.. <br>
+				/d/d/d.t.t/t/t.t. <br> 
+				/t/t/t/t/t/d/d/d/d/d.d.d.d.d. <br> 
+				............../t/ <br> 
+				
+				
+			</h1>
+
+			<div class="overlay"></div>
+			<div class="overlay-rep"></div>
+			<div class="overlay2"></div>
+		
+			<div class="circle-container">
+				<div class="circle">
+					<div class="dot">.</div>
+					<div class="dot">.</div>
+					<div class="dot">.</div>
+					<div class="dot">.</div>
+					<div class="dot">.</div>
+					<div class="dot">.</div>
+					<div class="dot">.</div>
+					<div class="dot">.</div>
+					<div class="dot">.</div>
+					<div class="dot">.</div>
+					<div class="dot">.</div>
+					<div class="dot">.</div>
+				</div>
+				</div>
+			<div class="circle-container2">
+			 <!-- Larger circle, moved up and left -->
+				<div class="circle2">
+					<!-- More dots for smoother outer ring -->
+					<div class="dot2">.</div>
+					<div class="dot2">.</div>
+					<div class="dot2">.</div>
+					<div class="dot2">.</div>
+					<div class="dot2">.</div>
+					<div class="dot2">.</div>
+					<div class="dot2">.</div>
+					<div class="dot2">.</div>
+					<div class="dot2">.</div>
+					<div class="dot2">.</div>
+					<div class="dot2">.</div>
+					<div class="dot2">.</div>
+					<div class="dot2">.</div>
+					<div class="dot2">.</div>
+					<div class="dot2">.</div>
+					<div class="dot2">.</div>
+					<div class="dot2">.</div>
+					<div class="dot2">.</div>
+					<div class="dot2">.</div>
+					<div class="dot2">.</div>
+					<div class="dot2">.</div>
+					<div class="dot2">.</div>
+					<div class="dot2">.</div>
+					<div class="dot2">.</div>
+				</div>
+			</div>
+ 			<div class="frame"></div>
+<!-- <div class="cutout-shadow"></div> -->
+			<div class="cutout"></div>
+			
+			
+		</main>
+
+		<div class="controls">
+
+			<!-- SET AUDIO INPUT -->
+			<div class="audio">
+				<audio id="pattern"  src="/assets/sound/p1_v003.mp3" controls loop></audio>
+			</div>
+
+
+		</div>
+
+		<script>
+			// wait for the document to be loaded
+			document.addEventListener("DOMContentLoaded", (event) => { 
+				// create animation object give the following info:
+				
+				// animationElement: tag, object id or class with leading dot or hashtag
+				// sensitivity: between 0 and 1, 0 beeing the lowest sesitivity, 1 the highest
+				// transition: a CSS transition time in seconds between 0 and infinity 
+				// lowerOutput: the lowerOutput range of the variable font (i.e. 400)
+				// upperOutput: the upperOutput range of the variable font (i.e. 1000)
+				// highPass: a highpass filter value (i.e. something between 0 and the maxValue (44100 KHz)) 
+				// lowPass: a lowpass filter value (i.e. something between 0 and the maxValue (44100 KHz)) 
+				// axisTag: the axisTag fot the variable font (i.e the CSS variable that you use)
+				
+				const title = new animationObject(".title", 0.4, 0.1, 0, 1000, 0, 1000, "--font-weight"); 
+				const title2 = new animationObject(".title-2", 0.97, 0.02, 0, 500, 0, 1000, "--font-weight"); 
+				const title3 = new animationObject(".title-3", 1, 0.1, 0, 100, 0, 1000, "--font-weight"); 
+				const circle1 = new animationObject(".circle", 1, 0.1, 0, 800, 0, 40000, "--font-weight"); 
+				const circle2 = new animationObject(".circle2", 0.9, 0.1, 0, 1200, 0, 1000, "--font-weight"); 
+				
+				// run the animate function
+				// declare the input element id given above1, 0.1, 0, 800, 0, 40000
+				// declare all animatable objects
+				
+				animateAll("pattern", [title, title2, title3, circle1, circle2]);
+			});
+		</script>
+
+	</body>
+</html>

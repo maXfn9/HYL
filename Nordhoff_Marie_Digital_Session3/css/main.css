@@ -1,0 +1,306 @@
+/* General Setup */
+body {
+  background-color: #898888;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.frame {
+  width: 1080px;
+  height: 1920px;
+  position: fixed;
+  z-index: 100;
+  background-color: white;
+  overflow: hidden;
+}
+
+/* Background Layers */
+.bg,
+.bg2,
+.bg3 {
+  width: 100vw;
+  height: 100vw;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bg {
+  z-index: 500;
+  background-color: rgb(102, 255, 0);
+}
+
+.bg2 {
+  z-index: -100;
+  top: 50%;
+  /* background-color: rgb(17, 255, 0); */
+  background-image: url('../images/blue-grainy-gradient-background-fading-black-perfect-circle-shape_229911-15460.avif');
+  
+  filter: blur(1000px) brightness(100%);
+  animation: scroll-anim1 10s linear infinite;
+  /* height: 100vw; */
+}
+
+.circle1 {
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -100;
+  top: 11%;
+  left: -18.3%;
+  width: 1480px;
+  height: 1480px;
+  /* background-color: rgb(17, 255, 0); */
+  background-image: url('../images/c1.png');
+  filter: blur(0px) brightness(100%);
+  animation: rotate1 10s linear infinite;
+  /* transform: translateX(-100px); */
+  /* height: 100vw; */
+
+}
+.circle2 {
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1000;
+  bottom: 0%;
+  width: 1080px;
+  height: 1080px;
+  /* background-color: rgb(17, 255, 0); */
+  background-image: url('../images/c2.png');
+  filter: blur(0px) brightness(100%);
+  animation: rotate2 10s linear infinite;
+  /* height: 100vw; */
+  mix-blend-mode:add;
+
+}
+
+.bg3 {
+  z-index: -100;
+  background-color: rgb(255, 0, 0);
+  /* background-image: url('../images/closeup-shot-wet-glass-reflecting-rainy-forest-scenery_181624-23365.avif'); */
+  background-image: url('../images/blue-grainy-gradient-background-fading-black-perfect-circle-shape_229911-15460.avif');
+  
+  filter: blur(3000px) invert() brightness(150%);
+  animation: scroll-anim2 15s linear infinite;
+  mix-blend-mode: exclusion;
+  transform: rotate(5deg);
+}
+
+/* Font */
+@font-face {
+  font-family: 'PlotTwist';
+  src: url('../fonts/RubikIso-Regular.ttf') format('truetype');
+}
+
+/* Color Utility */
+.green,
+.blue,
+.yellow {
+  color: #ffffff;
+  background-color: rgb(0, 0, 0) !important;
+}
+
+/* Keyframes */
+@keyframes scroll-anim1 {
+  0% { transform: translateX(-100%) rotate(-20deg); }
+  100% { transform: translateX(100%) rotate(20deg); }
+}
+
+@keyframes scroll-anim2 {
+  0% { transform: translateX(-100%) rotate(20deg); }
+  100% { transform: translateX(100%) rotate(-20deg); }
+}
+
+@keyframes scroll-row {
+  0% { transform: translateY(-50%) translateX(0%); }
+  100% { transform: translateY(-50%) translateX(-50%); }
+}
+
+@keyframes scroll-row-inverse {
+  0% { transform: translateY(-50%) translateX(-50%); }
+  100% { transform: translateY(-50%) translateX(0%); }
+}
+
+@keyframes move-up-down {
+  0% { transform: translateY(-60%); }
+  100% { transform: translateY(0%); }
+}
+@keyframes rotate1 {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes rotate2 {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
+}
+
+/* Scroll Rows Setup */
+.rows {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: space-around;
+  z-index: 6;
+  pointer-events: none;
+  mix-blend-mode: exclusion;
+}
+
+.row {
+  position: relative;
+  width: 100%;
+  min-height: 608px;
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  mix-blend-mode: exclusion;
+}
+
+/* Static + Scrolling Text */
+.static-text {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 100%;
+  text-align: center;
+  font-family: 'PlotTwist';
+  font-size: 900px;
+  color: white;
+  z-index: 2;
+  line-height: 1;
+  pointer-events: none;
+  mix-blend-mode: exclusion;
+  
+}
+
+.scroll-text,
+.scroll-text-inverse {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 200%;
+  font-family: 'PlotTwist';
+  font-size: 900px;
+  white-space: nowrap;
+  color: white;
+  line-height: 1;
+  pointer-events: none;
+  z-index: 1;
+  will-change: transform;
+  backface-visibility: hidden;
+  mix-blend-mode: exclusion;
+}
+
+.scroll-text {
+  animation: scroll-row 10s linear infinite;
+  /* background-color: rgba(255, 105, 180, 0.159); */
+}
+
+.scroll-text-inverse {
+  animation: scroll-row-inverse 10s linear infinite;
+}
+
+/* Floating Layer */
+.floating-layer {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-79%);
+  /* transform: translateX(3px); */
+  width: 100%;
+  text-align: center;
+  font-family: 'PlotTwist';
+  font-size: 900px;
+  color: rgb(0, 0, 0);
+  z-index: 2;
+  line-height: -1;
+  pointer-events: none;
+  mix-blend-mode: exclusion;
+  /* background-color: blue; */
+  /* animation: move-up-down 5s linear infinite alternate; */
+  margin: 0;
+  line-height: 67%;
+
+}
+.floating-layer2 {
+  position: absolute;
+  top: 0%;
+  left: 0;
+  /* transform: translateY(-78%); */
+  transform: translateX(3px);
+  width: 100%;
+  text-align: center;
+  font-family: 'PlotTwist';
+  font-size: 900px;
+  color: rgb(255, 255, 255);
+  z-index: 2;
+  line-height: -1;
+  pointer-events: none;
+  mix-blend-mode: exclusion;
+  /* background-color: blue; */
+  animation: move-up-down 20s linear infinite alternate;
+  margin: 0;
+  line-height: 67.5%;
+
+}
+
+.floating-layer h1 {
+  /* font-family: 'PlotTwist';
+  font-size: 900px;
+  color: rgb(255, 255, 255);
+
+  margin: 0; */
+}
+
+/* Noise Overlay */
+.invertAll {
+  margin-top: -15%;
+  width: 100%;
+  height: 120%;
+  background-color: rgb(0, 0, 0);
+  /* background: radial-gradient(circle at 20% 60%, rgb(0, 0, 0), rgba(0, 0, 0, 0)), */
+  /* url("https://img.freepik.com/free-vector/abstract-background-black-white-texture-grainy_474888-5175.jpg?semt=ais_hybrid&w=740"); */
+ /* grain here */
+/* url("data:image/svg+xml,%3Csvg viewBox='0 0 1000 1000' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); */
+  filter: contrast(1000%) brightness(40%) invert();
+  z-index: -10;
+  mix-blend-mode: difference;
+}
+
+.noise {
+   margin-top: -15%;
+  width: 100%;
+  height: 120%;
+  background: radial-gradient(
+      circle at 20% 60%,
+      rgb(0, 0, 0),
+      rgba(0, 0, 0, 0)
+    ),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 900 900' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  filter: contrast(1500%) brightness(40%);
+  mix-blend-mode: screen;
+}
+
+
+.noise2 {
+   margin-top: -15%;
+  width: 100%;
+  height: 120%;
+  background: radial-gradient(
+      circle at 20% 60%,
+      rgb(0, 0, 0),
+      rgba(0, 0, 0, 0)
+    ),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 900 900' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  filter: contrast(3500%) brightness(300%) invert() opacity(15%) contrast(200%);
+  mix-blend-mode: lighten;
+}
