@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Overview</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 0 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1 {
+            color: #111;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 10px;
+        }
+        .session-list {
+            list-style: none;
+            padding: 0;
+        }
+        .session-list li {
+            margin: 15px 0;
+        }
+        .session-list a {
+            display: block;
+            padding: 15px;
+            background: white;
+            color: #0366d6;
+            text-decoration: none;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
+        .session-list a:hover {
+            background: #f6f8fa;
+            border-color: #0366d6;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Course Dashboard</h1>
+    <p>Select a session below to view the contents:</p>
+
+    <ul class="session-list">
+        <li><a href="session01.html">Session 01</a></li>
+        <li><a href="session02.html">Session 02</a></li>
+        <li><a href="session03.html">Session 03</a></li>
+        <li><a href="session04.html">Session 04</a></li>
+    </ul>
+
+</body>
+</html>
